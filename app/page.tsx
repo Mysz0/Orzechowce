@@ -69,7 +69,7 @@ export default function Home() {
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>Jesteśmy jednostką organizacyjną Urzędu Miasta Przemyśla. Pod opieką mamy ponad 200 zwierząt. Zapewniamy bezpieczeństwo, opiekę weterynaryjną i szukamy nowych domów dla psów i kotów.</p>
               <p>Przyjmujemy zagubione lub ranne zwierzęta przekazane przez służby miejskie i Policję. Zwierzęta po przyjęciu przechodzą kwarantannę i po 14 dniach mogą trafić do adopcji.</p>
-              <p>Pomóc możesz na wiele sposobów: adopcja, wolontariat, wsparcie finansowe lub rzeczowe (karma, środki higieniczne, wyposażenie). Kontakt: 37-712 Orzechowce 3, tel. 16 672 07 07 (do 15:00), e-mail: schr.orzechowce@gazeta.pl.</p>
+              <p>Pomóc możesz na wiele sposobów: adopcja, wolontariat, wsparcie finansowe lub rzeczowe (karma, środki higieniczne, wyposażenie).</p>
             </div>
           </div>
         </div>
@@ -79,6 +79,74 @@ export default function Home() {
       <section className="container mx-auto px-4 pb-14">
         <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6">
           <PetStrip />
+        </div>
+      </section>
+
+      {/* Information Cards */}
+      <section className="container mx-auto px-4 pb-20">
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* 1.5% Card */}
+          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-8 flex flex-col items-center text-center">
+            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-emerald-100">
+              <img 
+                src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=400&h=400&fit=crop" 
+                alt="1.5% dla Schroniska"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-3">1,5% dla Schroniska</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Przekaż 1,5% podatku dla Stowarzyszenia "Kudłate serce". KRS: 0000644790. Dziękujemy za każdą pomoc!
+            </p>
+            <Link
+              href="/1-5-procent"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+            >
+              Czytaj więcej
+            </Link>
+          </div>
+
+          {/* Adoption Questionnaire Card */}
+          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-8 flex flex-col items-center text-center">
+            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-emerald-100">
+              <img 
+                src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop" 
+                alt="Adopcje zwierząt"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-3">Adopcje zwierząt</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Dowiedz się jak wygląda proces adopcji i czego się spodziewać. Ankieta adopcyjna czeka w schronisku.
+            </p>
+            <Link
+              href="/ankieta"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+            >
+              Czytaj więcej
+            </Link>
+          </div>
+
+          {/* Required Reading Card */}
+          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-8 flex flex-col items-center text-center">
+            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-emerald-100">
+              <img 
+                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop" 
+                alt="Warunki adopcji"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-3">Warunki adopcji</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Poznaj przepisy i regulacje dotyczące ochrony zwierząt oraz obowiązki właścicieli.
+            </p>
+            <Link
+              href="/lektura"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+            >
+              Czytaj więcej
+            </Link>
+          </div>
         </div>
       </section>
 
