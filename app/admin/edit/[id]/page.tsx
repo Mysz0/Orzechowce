@@ -21,6 +21,7 @@ export default function EditPetPage() {
     sex: '' as '' | 'male' | 'female',
     description: '',
     image_url: '',
+    image_urls: '',
     status: 'available' as 'available' | 'adopted' | 'reserved',
   })
 
@@ -42,6 +43,7 @@ export default function EditPetPage() {
         sex: foundPet.sex || '',
         description: foundPet.description || '',
         image_url: foundPet.image_url || '',
+        image_urls: foundPet.image_urls?.join(', ') || '',
         status: foundPet.status,
       })
     } catch (err) {
@@ -62,6 +64,12 @@ export default function EditPetPage() {
       sex: formData.sex || undefined,
       description: formData.description || undefined,
       image_url: formData.image_url || undefined,
+      image_urls: formData.image_urls
+        ? formData.image_urls
+            .split(',')
+            .map((s) => s.trim())
+            .filter(Boolean)
+        : undefined,
       status: formData.status,
     }
 
@@ -231,6 +239,21 @@ export default function EditPetPage() {
               <p className="mt-2 text-sm text-gray-500">
                 Wskazówka: Możesz przesłać zdjęcie do Supabase Storage lub użyć zewnętrznego URL
               </p>
+            </div>
+
+            <div>
+              <label htmlFor="image_urls" className="block text-sm font-medium text-gray-700 mb-2">
+                Dodatkowe zdjęcia (URL, po przecinku)
+              </label>
+              <textarea
+                id="image_urls"
+                value={formData.image_urls}
+                onChange={(e) => setFormData({ ...formData, image_urls: e.target.value })}
+                rows={2}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                placeholder="https://example.com/a.jpg, https://example.com/b.jpg"
+              />
+              <p className="mt-2 text-sm text-gray-500">Opcjonalnie, podaj wiele adresów URL oddzielonych przecinkami.</p>
             </div>
 
             {/* Status */}
