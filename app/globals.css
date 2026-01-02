@@ -13,6 +13,18 @@
   color-scheme: light;
 }
 
+/* Dark mode */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark {
+  --sand: #1f2937;
+  --linen: #111827;
+  --ink: #f3f4f6;
+  --muted: #9ca3af;
+}
+
 body {
   background: radial-gradient(circle at 12% 18%, rgba(45, 122, 88, 0.08), transparent 26%),
     radial-gradient(circle at 84% 8%, rgba(15, 23, 42, 0.07), transparent 32%),
@@ -20,6 +32,62 @@ body {
   color: var(--ink);
   min-height: 100vh;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+}
+
+/* High contrast mode */
+html.high-contrast {
+  --accent: #000000;
+  --muted: #000000;
+}
+
+html.high-contrast body {
+  background: #ffffff;
+  color: #000000;
+}
+
+html.high-contrast a {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+html.high-contrast button,
+html.high-contrast [role="button"] {
+  border-width: 2px;
+  font-weight: 600;
+}
+
+html.high-contrast .bg-emerald-700 {
+  background-color: #000000;
+  color: #ffff00;
+  border: 2px solid #000000;
+}
+
+html.high-contrast .text-emerald-700 {
+  color: #0000ee;
+}
+
+html.high-contrast input,
+html.high-contrast textarea,
+html.high-contrast select {
+  border-width: 2px;
+}
+
+html.dark.high-contrast {
+  --ink: #ffffff;
+}
+
+html.dark.high-contrast body {
+  background: #000000;
+  color: #ffffff;
+}
+
+html.dark.high-contrast a {
+  color: #ffff00;
 }
 
 a {

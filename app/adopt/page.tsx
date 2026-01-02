@@ -23,13 +23,6 @@ export default function AdoptPage() {
           <div className="flex items-center gap-3 text-sm font-medium text-gray-800">
             <Link href="/" className="px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Strona główna</Link>
             <Link href="/adopt" className="px-3 py-2 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200">Adopcje</Link>
-            <Link 
-              href="/admin"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-200 text-sm font-medium text-emerald-900 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 transition-colors"
-            >
-              Panel administracyjny
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </header>
@@ -53,8 +46,7 @@ export default function AdoptPage() {
       </main>
 
       {/* Contact Section */}
-      <section id="kontakt" className="relative py-16 overflow-hidden scroll-mt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-emerald-100/30" />
+      <section id="kontakt" className="relative py-16 overflow-hidden scroll-mt-20 bg-gray-50">
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -62,7 +54,7 @@ export default function AdoptPage() {
               <p className="text-lg text-gray-600">Schronisko dla bezdomnych zwierząt w Orzechowcach</p>
             </div>
 
-            <div className="bg-white/95 backdrop-blur rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] p-8 md:p-10 space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
+            <div className="bg-white rounded-lg border border-gray-200 p-8 md:p-10 space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
               {/* Address & Hours */}
               <div className="space-y-4">
                 <div>
@@ -80,9 +72,9 @@ export default function AdoptPage() {
                 <ContactButton />
               </div>
 
-              <div className="border-t border-emerald-100 pt-8 space-y-4">
+              <div className="border-t border-gray-200 pt-8 space-y-4">
                 <p className="text-sm text-gray-700 font-medium">Chcecie pomóc naszym zwierzakom? Prosimy o wpłaty na nasze konto:</p>
-                <div className="bg-emerald-50 rounded-xl p-4 space-y-2 text-sm">
+                <div className="bg-gray-100 rounded-xl p-4 space-y-2 text-sm">
                   <p className="text-gray-700"><span className="font-medium">Getin Noble Bank Nr konta:</span> 19 1560 0013 2180 9456 5000 0001</p>
                   <p className="text-gray-700"><span className="font-medium">kod BIC (SWIFT):</span> GBGCPLPK <span className="font-medium">IBAN:</span> PL 19 1560 0013 2180 9456 5000 0001</p>
                 </div>

@@ -1,35 +1,39 @@
+'use client'
+
 import Link from 'next/link'
 import { PawPrint, ArrowRight } from 'lucide-react'
 import PetStrip from '@/components/PetStrip'
 import ContactButton from '@/components/ContactButton'
 import ScrollToContactButton from '@/components/ScrollToContactButton'
+import AccessibilitySettings from '@/components/AccessibilitySettings'
 
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-emerald-50/60">
+      <header className="sticky top-0 z-50 bg-white/85 dark:bg-gray-900/85 backdrop-blur border-b border-emerald-50/60 dark:border-gray-800">
         <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-2 md:gap-3">
             <div className="h-10 w-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center">
               <PawPrint className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-base md:text-xl font-semibold text-gray-900">Schronisko Orzechowce</h1>
-              <p className="text-xs md:text-sm text-gray-500">Adopcje psów i kotów</p>
+              <h1 className="text-base md:text-xl font-semibold text-gray-900 dark:text-white">Schronisko Orzechowce</h1>
+              <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">Adopcje psów i kotów</p>
             </div>
           </Link>
-          <nav className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-medium text-gray-800">
-            <Link href="/" className="px-2 md:px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Strona główna</Link>
-            <Link href="/adopt" className="px-2 md:px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Adopcje</Link>
+          <nav className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-medium text-gray-800 dark:text-gray-200">
+            <Link href="/" className="px-2 md:px-3 py-2 rounded-full hover:bg-emerald-50 dark:hover:bg-gray-800 transition-colors">Strona główna</Link>
+            <Link href="/adopt" className="px-2 md:px-3 py-2 rounded-full hover:bg-emerald-50 dark:hover:bg-gray-800 transition-colors">Adopcje</Link>
+            <AccessibilitySettings />
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-8 md:py-12 lg:py-16">
+      <section className="relative overflow-hidden py-8 md:py-12 lg:py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center">
           <div>
             <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-emerald-700/80 mb-3 md:mb-4">Adoptuj odpowiedzialnie</p>

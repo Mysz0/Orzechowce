@@ -20,9 +20,6 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 **Manager projektu / Decydent**
 → Przeczytaj: **COMPARISON.md** → **PROJECT_SUMMARY.md**
 
-**Designer / UX**
-→ Zobacz: **VISUAL_GUIDE.md**
-
 **Nowy członek zespołu**
 → Przeczytaj: **PROJECT_SUMMARY.md** → **FILE_INDEX.md**
 
@@ -150,25 +147,7 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 
 ---
 
-### 7. VISUAL_GUIDE.md 🎨
-**Dla kogo**: Designerzy, frontend developers, UX  
-**Czas czytania**: 15 minut  
-**Poziom**: Wizualny  
-**Język**: Angielski (ASCII art)  
-
-**Zawartość**:
-- 📱 ASCII mockupy wszystkich stron
-- 🎨 Paleta kolorów z hexami
-- 🔄 Stany i animacje
-- 📸 Wytyczne dla obrazków
-- 🎯 User journeys
-- 💡 Pro tips dla designu
-
-**Kiedy czytać**: Zrozumienie UI/UX, planowanie zmian designu
-
----
-
-### 8. FILE_INDEX.md 📁
+### 7. FILE_INDEX.md 📁
 **Dla kogo**: Deweloperzy, maintainerzy  
 **Czas czytania**: 10 minut (referencyjna)  
 **Poziom**: Techniczny  
@@ -186,7 +165,7 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 
 ---
 
-### 9. DOCUMENTATION_INDEX.md 📚
+### 8. DOCUMENTATION_INDEX.md 📚
 **Dla kogo**: Wszyscy  
 **Czas czytania**: 5 minut  
 **Poziom**: Nawigacyjny  
@@ -234,8 +213,7 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 1. README.md (15 min)
 2. PROJECT_SUMMARY.md (20 min)
 3. FILE_INDEX.md (10 min)
-4. VISUAL_GUIDE.md (15 min)
-5. Kod projektu (30 min)
+4. Kod projektu (30 min)
 
 **Rezultat**: Pełne zrozumienie architektury i kodu
 
@@ -246,8 +224,6 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 
 1. PROJECT_SUMMARY.md (20 min)
 2. COMPARISON.md (15 min)
-3. VISUAL_GUIDE.md (10 min - przejrzeć mockupy)
-
 **Rezultat**: Zrozumienie wartości biznesowej projektu
 
 ---
@@ -281,9 +257,6 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 ### Porównanie Przed/Po
 → **COMPARISON.md**
 
-### UI/UX Design
-→ **VISUAL_GUIDE.md**
-
 ### Lista Wszystkich Plików
 → **FILE_INDEX.md**
 
@@ -316,8 +289,8 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 ## 📊 Statystyki Dokumentacji
 
 ### Ogólne
-- **Całkowita liczba dokumentów**: 9
-- **Całkowita liczba słów**: ~25,000+
+- **Całkowita liczba dokumentów**: 8
+- **Całkowita liczba słów**: ~22,000+
 - **Całkowity czas czytania**: ~2 godziny
 - **Języki**: Polski, Angielski
 - **Formaty**: Markdown (.md)
@@ -326,18 +299,17 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 - **Przewodniki**: 4 (QUICK_START, README, DEPLOYMENT, QUICK_REFERENCE)
 - **Referencyjne**: 2 (FILE_INDEX, DOCUMENTATION_INDEX)
 - **Analityczne**: 2 (COMPARISON, PROJECT_SUMMARY)
-- **Wizualne**: 1 (VISUAL_GUIDE)
 
 ### Według Poziomu
 - **Podstawowy**: 3 (QUICK_START_PL, README, QUICK_REFERENCE)
-- **Średniozaawansowany**: 3 (DEPLOYMENT, PROJECT_SUMMARY, VISUAL_GUIDE)
+- **Średniozaawansowany**: 2 (DEPLOYMENT, PROJECT_SUMMARY)
 - **Zaawansowany**: 2 (FILE_INDEX, COMPARISON)
 - **Nawigacyjny**: 1 (ten dokument)
 
 ### Według Grupy Docelowej
 - **Wszyscy**: 2 (README, DOCUMENTATION_INDEX)
 - **Początkujący**: 2 (QUICK_START_PL, QUICK_REFERENCE)
-- **Deweloperzy**: 3 (PROJECT_SUMMARY, FILE_INDEX, VISUAL_GUIDE)
+- **Deweloperzy**: 2 (PROJECT_SUMMARY, FILE_INDEX)
 - **Biznes**: 1 (COMPARISON)
 - **Wdrożenie**: 1 (DEPLOYMENT)
 
@@ -397,7 +369,6 @@ Kompletny przewodnik po dokumentacji projektu Schronisko Orzechowce.
 - [ ] QUICK_REFERENCE.md
 - [ ] COMPARISON.md
 - [ ] PROJECT_SUMMARY.md
-- [ ] VISUAL_GUIDE.md
 - [ ] FILE_INDEX.md
 
 ### Zakładki do trzymania:
