@@ -71,21 +71,21 @@ export default function PetStrip() {
     <div className="relative">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.25em] text-emerald-700/80">Nasi podopieczni</p>
-          <h3 className="text-2xl font-semibold text-gray-900">Aktualnie w schronisku</h3>
+          <p className="text-sm uppercase tracking-[0.25em] text-emerald-700/80 dark:text-emerald-400/80">Nasi podopieczni</p>
+          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Aktualnie w schronisku</h3>
         </div>
         <div className="flex gap-2">
           <button
             aria-label="Przewiń w lewo"
             onClick={() => scrollBy(-320)}
-            className="h-10 w-10 rounded-full border border-emerald-200 bg-white text-emerald-800 hover:border-emerald-300 flex items-center justify-center shadow-sm"
+            className="h-10 w-10 rounded-full border border-emerald-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-emerald-800 dark:text-emerald-300 hover:border-emerald-300 dark:hover:border-emerald-500 flex items-center justify-center shadow-sm"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             aria-label="Przewiń w prawo"
             onClick={() => scrollBy(320)}
-            className="h-10 w-10 rounded-full border border-emerald-200 bg-white text-emerald-800 hover:border-emerald-300 flex items-center justify-center shadow-sm"
+            className="h-10 w-10 rounded-full border border-emerald-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-emerald-800 dark:text-emerald-300 hover:border-emerald-300 dark:hover:border-emerald-500 flex items-center justify-center shadow-sm"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -103,14 +103,14 @@ export default function PetStrip() {
             {Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
-                className="h-40 w-56 rounded-xl bg-emerald-100 animate-pulse flex-shrink-0"
+                className="h-40 w-56 rounded-xl bg-emerald-100 dark:bg-gray-800 animate-pulse flex-shrink-0"
               />
             ))}
           </div>
         )}
 
         {!loading && pets.length === 0 && (
-          <div className="text-sm text-gray-600">Brak dostępnych zwierząt w bazie.</div>
+          <div className="text-sm text-gray-600 dark:text-gray-300">Brak dostępnych zwierząt w bazie.</div>
         )}
 
         {!loading && pets.length > 0 && (
@@ -128,7 +128,7 @@ export default function PetStrip() {
               return (
                 <div
                   key={`${pet.id}-${idx}`}
-                  className="flex-shrink-0 rounded-xl overflow-hidden border border-emerald-100 bg-white shadow-sm"
+                  className="flex-shrink-0 rounded-xl overflow-hidden border border-emerald-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm"
                   style={{ width: 220, height: 160 }}
                 >
                   {primary ? (

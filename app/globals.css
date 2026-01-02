@@ -179,3 +179,78 @@ a {
     animation: pulse-glow 2s infinite;
   }
 }
+
+@layer components {
+  /* Reusable surfaces */
+  .surface-hero {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_25px_80px_rgba(45,122,88,0.12)];
+  }
+
+  .surface-section {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)];
+  }
+
+  /* Colored panels */
+  .panel-emerald {
+    @apply bg-emerald-50 dark:bg-emerald-900/30 rounded-2xl p-6 border border-transparent dark:border-emerald-800/50;
+  }
+
+  .panel-blue {
+    @apply bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 border border-blue-100 dark:border-blue-800/50;
+  }
+
+  .panel-amber {
+    @apply bg-amber-50 dark:bg-amber-900/20 rounded-2xl p-6 border border-amber-100 dark:border-amber-800/50;
+  }
+
+  .panel-red {
+    @apply bg-red-50 dark:bg-red-900/20 rounded-2xl p-6 border border-red-100 dark:border-red-800/50;
+  }
+
+  /* Lists and bullets */
+  .bullet-emerald {
+    @apply text-emerald-600 dark:text-emerald-400 font-bold;
+  }
+
+  .bullet-blue {
+    @apply text-blue-600 dark:text-blue-400 font-bold;
+  }
+
+  .bullet-amber {
+    @apply text-amber-600 dark:text-amber-400 font-bold;
+  }
+
+  .bullet-red {
+    @apply text-red-600 dark:text-red-400 font-bold;
+  }
+
+  /* Badges and emphasis */
+  .number-badge {
+    @apply w-8 h-8 rounded-full bg-emerald-700 dark:bg-emerald-600 text-white flex items-center justify-center text-sm font-bold;
+  }
+
+  .krs-box {
+    @apply bg-white dark:bg-gray-800 rounded-xl p-4 border-2 border-emerald-200 dark:border-emerald-700 text-center;
+  }
+
+  .warning-amber {
+    @apply bg-amber-50 dark:bg-amber-900/30 border-l-4 border-amber-500 dark:border-amber-600 p-4 rounded text-amber-900 dark:text-amber-200 font-medium;
+  }
+
+  .info-blue {
+    @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 dark:border-blue-600 p-4 rounded text-blue-900 dark:text-blue-200 font-medium;
+  }
+
+  /* Typography helpers */
+  .heading-strong {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .text-soft {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  .text-muted {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+}

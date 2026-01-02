@@ -41,17 +41,17 @@ export default function PetGrid() {
   return (
     <div>
       {/* Filter Buttons */}
-      <div className="mb-10 flex items-center justify-center gap-3 flex-wrap">
-        <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-emerald-100 shadow-sm">
-          <Filter className="w-4 h-4 text-emerald-700" />
-          <span className="text-emerald-900 text-sm font-medium">Filtruj</span>
+      <div className="mb-10 flex items-center justify-center gap-3 flex-wrap animate-in fade-in slide-in-from-bottom-2 duration-500">
+        <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white dark:bg-gray-900 border border-emerald-100 dark:border-gray-700 shadow-sm">
+          <Filter className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
+          <span className="text-emerald-900 dark:text-emerald-200 text-sm font-medium">Filtruj</span>
         </div>
         <button
           onClick={() => setFilter('all')}
           className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border hover:scale-105 active:scale-95 ${
             filter === 'all'
               ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg'
-              : 'bg-white text-emerald-900 border-emerald-200 hover:border-emerald-300'
+              : 'bg-white dark:bg-gray-800 text-emerald-900 dark:text-emerald-100 border-emerald-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500'
           }`}
         >
           Wszystkie ({pets.length})
@@ -61,7 +61,7 @@ export default function PetGrid() {
           className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border hover:scale-105 active:scale-95 ${
             filter === 'dog'
               ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg'
-              : 'bg-white text-emerald-900 border-emerald-200 hover:border-emerald-300'
+              : 'bg-white dark:bg-gray-800 text-emerald-900 dark:text-emerald-100 border-emerald-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500'
           }`}
         >
           Psy ({dogCount})
@@ -71,7 +71,7 @@ export default function PetGrid() {
           className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border hover:scale-105 active:scale-95 ${
             filter === 'cat'
               ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg'
-              : 'bg-white text-emerald-900 border-emerald-200 hover:border-emerald-300'
+              : 'bg-white dark:bg-gray-800 text-emerald-900 dark:text-emerald-100 border-emerald-200 dark:border-gray-700 hover:border-emerald-300 dark:hover:border-emerald-500'
           }`}
         >
           Koty ({catCount})
@@ -81,16 +81,16 @@ export default function PetGrid() {
       {/* Loading State */}
       {loading && (
         <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-orange-600"></div>
-          <p className="mt-4 text-gray-600">Ładowanie zwierząt...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 dark:border-gray-700 border-t-orange-600"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-300">Ładowanie zwierząt...</p>
         </div>
       )}
 
       {/* Empty State */}
       {!loading && filteredPets.length === 0 && (
-        <div className="text-center py-12 bg-white rounded-2xl shadow-sm">
-          <p className="text-xl text-gray-600 mb-2">Brak zwierząt w tej kategorii</p>
-          <p className="text-gray-500">Sprawdź wkrótce - może pojawią się nowe podopieczni!</p>
+        <div className="text-center py-12 bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-emerald-100 dark:border-gray-700">
+          <p className="text-xl text-gray-600 dark:text-gray-200 mb-2">Brak zwierząt w tej kategorii</p>
+          <p className="text-gray-500 dark:text-gray-400">Sprawdź wkrótce - może pojawią się nowe podopieczni!</p>
         </div>
       )}
 
@@ -109,15 +109,15 @@ export default function PetGrid() {
       {selected && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4 animate-in fade-in duration-200"
              onClick={(e) => { if (e.target === e.currentTarget) setSelected(null) }}>
-          <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
+          <div className="relative w-full max-w-4xl bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-90 slide-in-from-bottom-6 duration-300 ease-out">
             <button
               onClick={() => setSelected(null)}
-              className="absolute right-4 top-4 z-10 text-sm font-semibold text-gray-600 hover:text-gray-900 transition-all hover:scale-110 active:scale-95 px-3 py-2 rounded-lg hover:bg-gray-100"
+              className="absolute right-4 top-4 z-10 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all hover:scale-110 active:scale-95 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               Zamknij
             </button>
             <div className="grid md:grid-cols-2 min-h-[460px]">
-              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 min-h-[320px] flex flex-col animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: '100ms' }}>
+              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 min-h-[320px] flex flex-col animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: '100ms' }}>
                 {gallery.length > 0 ? (
                   <>
                     <div className="relative flex-1 overflow-hidden">
@@ -131,13 +131,13 @@ export default function PetGrid() {
                         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3">
                           <button
                             onClick={() => setGalleryIndex((prev) => (prev - 1 + gallery.length) % gallery.length)}
-                            className="h-10 w-10 rounded-full bg-white/80 text-gray-800 flex items-center justify-center shadow hover:bg-white transition-all hover:scale-110 active:scale-95"
+                            className="h-10 w-10 rounded-full bg-white/80 dark:bg-gray-900/70 text-gray-800 dark:text-gray-100 flex items-center justify-center shadow hover:bg-white dark:hover:bg-gray-800 transition-all hover:scale-110 active:scale-95"
                           >
                             ‹
                           </button>
                           <button
                             onClick={() => setGalleryIndex((prev) => (prev + 1) % gallery.length)}
-                            className="h-10 w-10 rounded-full bg-white/80 text-gray-800 flex items-center justify-center shadow hover:bg-white transition-all hover:scale-110 active:scale-95"
+                            className="h-10 w-10 rounded-full bg-white/80 dark:bg-gray-900/70 text-gray-800 dark:text-gray-100 flex items-center justify-center shadow hover:bg-white dark:hover:bg-gray-800 transition-all hover:scale-110 active:scale-95"
                           >
                             ›
                           </button>
@@ -151,7 +151,7 @@ export default function PetGrid() {
                             key={idx}
                             onClick={() => setGalleryIndex(idx)}
                             className={`h-14 w-20 rounded-lg overflow-hidden border transition-all hover:scale-105 ${
-                              idx === galleryIndex ? 'border-emerald-500 border-2 scale-105' : 'border-transparent hover:border-emerald-300'
+                              idx === galleryIndex ? 'border-emerald-500 border-2 scale-105' : 'border-transparent hover:border-emerald-300 dark:hover:border-emerald-500'
                             }`}
                           >
                             <img src={url} alt={`${selected.name}-${idx}`} className="h-full w-full object-cover" />
@@ -166,38 +166,38 @@ export default function PetGrid() {
                   </div>
                 )}
               </div>
-              <div className="p-8 flex flex-col gap-4 animate-in fade-in slide-in-from-right-4 duration-500 overflow-y-auto" style={{ animationDelay: '200ms' }}>
+                <div className="p-8 flex flex-col gap-4 animate-in fade-in slide-in-from-right-4 duration-500 overflow-y-auto" style={{ animationDelay: '200ms' }}>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Zwierzę do adopcji</p>
-                  <h3 className="text-3xl font-semibold text-gray-900 break-words">{selected.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{selected.species === 'dog' ? 'Pies' : selected.species === 'cat' ? 'Kot' : 'Zwierzę'}</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2">Zwierzę do adopcji</p>
+                    <h3 className="text-3xl font-semibold text-gray-900 dark:text-white break-words">{selected.name}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{selected.species === 'dog' ? 'Pies' : selected.species === 'cat' ? 'Kot' : 'Zwierzę'}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
                   {selected.age !== undefined && (
-                    <span className="inline-flex items-center gap-2 text-sm text-gray-700 bg-gray-100 px-3 py-1.5 rounded-full">
+                      <span className="inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full">
                       Wiek: {selected.age} {selected.age === 1 ? 'rok' : selected.age < 5 ? 'lata' : 'lat'}
                     </span>
                   )}
                   {selected.sex && (
-                    <span className="inline-flex items-center gap-2 text-sm text-gray-700 bg-gray-100 px-3 py-1.5 rounded-full">
+                      <span className="inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full">
                       Płeć: {selected.sex === 'male' ? 'Samiec' : 'Samica'}
                     </span>
                   )}
                   {selected.status && (
-                    <span className="inline-flex items-center gap-2 text-sm text-gray-700 bg-gray-100 px-3 py-1.5 rounded-full capitalize">
+                      <span className="inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full capitalize">
                       Status: {selected.status === 'available' ? 'Dostępny' : selected.status === 'reserved' ? 'Zarezerwowany' : 'Adoptowany'}
                     </span>
                   )}
                 </div>
 
                 {selected.description && (
-                  <p className="text-gray-700 leading-relaxed text-sm md:text-base whitespace-pre-wrap break-words overflow-wrap-anywhere">
+                    <p className="text-gray-700 dark:text-gray-200 leading-relaxed text-sm md:text-base whitespace-pre-wrap break-words overflow-wrap-anywhere">
                     {selected.description}
                   </p>
                 )}
 
-                <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <span className="inline-flex h-2 w-2 rounded-full bg-green-500" aria-hidden />
                   <span>Schronisko Orzechowce</span>
                 </div>
