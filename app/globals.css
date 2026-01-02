@@ -19,6 +19,7 @@ body {
     linear-gradient(180deg, var(--sand) 0%, var(--linen) 100%);
   color: var(--ink);
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 a {

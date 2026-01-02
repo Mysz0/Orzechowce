@@ -47,13 +47,13 @@ export default function PetCard({ pet, onOpen }: PetCardProps) {
         </div>
       </div>
 
-      <div className="p-5 flex flex-col gap-4 min-h-64">
-        <div className="transition-transform duration-300">
-          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors duration-300">{pet.name}</h3>
+      <div className="p-5 flex flex-col gap-3 h-72">
+        <div className="transition-transform duration-300 flex-shrink-0">
+          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors duration-300 break-words">{pet.name}</h3>
           <p className="text-sm text-gray-500 mt-1">{speciesLabel}</p>
         </div>
 
-        <div className="flex flex-wrap gap-2 transition-all duration-300">
+        <div className="flex flex-wrap gap-2 transition-all duration-300 flex-shrink-0">
           {pet.age && (
             <span className="inline-flex items-center gap-2 text-sm text-emerald-900 bg-emerald-50 px-3 py-1.5 rounded-full transition-all duration-300 hover:bg-emerald-100 hover:shadow-md">
               <Calendar className="w-4 h-4" />
@@ -67,21 +67,23 @@ export default function PetCard({ pet, onOpen }: PetCardProps) {
           )}
         </div>
 
-        <div className="flex-1 min-h-12">
+        <div className="flex-1 overflow-hidden">
           {pet.description && (
-            <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 transition-colors duration-300">
+            <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 break-words transition-colors duration-300">
               {pet.description}
             </p>
           )}
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-gray-500 transition-colors duration-300 group-hover:text-gray-700">
-          <MapPin className="w-4 h-4" />
-          <span>Schronisko Orzechowce</span>
-        </div>
-        <div className="w-full inline-flex items-center justify-between px-0 py-1 text-sm font-semibold text-gray-900 transition-all duration-300 group-hover:gap-3">
-          <span className="transition-colors duration-300 group-hover:text-emerald-700">Kliknij, aby zobaczyć opis</span>
-          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+        <div className="flex-shrink-0 space-y-2 mt-auto">
+          <div className="flex items-center gap-2 text-sm text-gray-500 transition-colors duration-300 group-hover:text-gray-700">
+            <MapPin className="w-4 h-4" />
+            <span>Schronisko Orzechowce</span>
+          </div>
+          <div className="w-full inline-flex items-center justify-between px-0 py-1 text-sm font-semibold text-gray-900 transition-all duration-300 group-hover:gap-3">
+            <span className="transition-colors duration-300 group-hover:text-emerald-700">Kliknij, aby zobaczyć opis</span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </div>
         </div>
       </div>
     </div>

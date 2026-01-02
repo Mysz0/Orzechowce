@@ -166,10 +166,10 @@ export default function PetGrid() {
                   </div>
                 )}
               </div>
-              <div className="p-8 flex flex-col gap-4 animate-in fade-in slide-in-from-right-4 duration-500" style={{ animationDelay: '200ms' }}>
+              <div className="p-8 flex flex-col gap-4 animate-in fade-in slide-in-from-right-4 duration-500 overflow-y-auto" style={{ animationDelay: '200ms' }}>
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Zwierzę do adopcji</p>
-                  <h3 className="text-3xl font-semibold text-gray-900">{selected.name}</h3>
+                  <h3 className="text-3xl font-semibold text-gray-900 break-words">{selected.name}</h3>
                   <p className="text-sm text-gray-500 mt-1">{selected.species === 'dog' ? 'Pies' : selected.species === 'cat' ? 'Kot' : 'Zwierzę'}</p>
                 </div>
 
@@ -192,7 +192,7 @@ export default function PetGrid() {
                 </div>
 
                 {selected.description && (
-                  <p className="text-gray-700 leading-relaxed text-sm md:text-base whitespace-pre-wrap">
+                  <p className="text-gray-700 leading-relaxed text-sm md:text-base whitespace-pre-wrap break-words overflow-wrap-anywhere">
                     {selected.description}
                   </p>
                 )}
