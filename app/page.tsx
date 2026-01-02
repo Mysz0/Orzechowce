@@ -11,42 +11,35 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-emerald-50/60">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
+        <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-3">
+          <Link href="/" className="flex items-center gap-2 md:gap-3">
             <div className="h-10 w-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center">
               <PawPrint className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-gray-900">Schronisko Orzechowce</h1>
-              <p className="text-sm text-gray-500">Adopcje psów i kotów</p>
+              <h1 className="text-base md:text-xl font-semibold text-gray-900">Schronisko Orzechowce</h1>
+              <p className="text-xs md:text-sm text-gray-500">Adopcje psów i kotów</p>
             </div>
-          </div>
-          <div className="flex items-center gap-3 text-sm font-medium text-gray-800">
-            <Link href="/" className="px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Strona główna</Link>
-            <Link href="/adopt" className="px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Adopcje</Link>
-            <Link 
-              href="/admin"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-200 text-sm font-medium text-emerald-900 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 transition-colors"
-            >
-              Panel administracyjny
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          </Link>
+          <nav className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-medium text-gray-800">
+            <Link href="/" className="px-2 md:px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Strona główna</Link>
+            <Link href="/adopt" className="px-2 md:px-3 py-2 rounded-full hover:bg-emerald-50 transition-colors">Adopcje</Link>
+          </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16">
-        <div className="container mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+      <section className="relative overflow-hidden py-8 md:py-12 lg:py-16">
+        <div className="container mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-emerald-700/80 mb-4">Adoptuj odpowiedzialnie</p>
-              <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-6">
+            <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-emerald-700/80 mb-3 md:mb-4">Adoptuj odpowiedzialnie</p>
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight mb-4 md:mb-6">
                 Zobacz psy i koty gotowe do adopcji.
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mb-8">
+              <p className="text-base md:text-lg text-gray-600 max-w-2xl mb-6 md:mb-8">
               One potrzebują Twojej miłości i wsparcia. Przeglądaj listę naszych podopiecznych, poznaj ich wiek, charakter i potrzeby. Kliknij kartę, aby otworzyć pełny opis zwierzęcia.
               </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 md:gap-3">
               <Link
                 href="/adopt"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors shadow-sm"
@@ -58,15 +51,15 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_25px_80px_rgba(45,122,88,0.12)] p-8">
-            <div className="flex items-start justify-between gap-4 mb-6">
+          <div className="relative bg-white/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 shadow-[0_25px_80px_rgba(45,122,88,0.12)] p-6 md:p-8">
+            <div className="flex items-start justify-between gap-3 md:gap-4 mb-4 md:mb-6">
               <div>
-                <p className="text-sm text-gray-500">O schronisku</p>
-                <p className="text-3xl font-semibold mt-2 text-gray-900">Schronisko dla Bezdomnych Zwierząt w Orzechowcach</p>
+                <p className="text-xs md:text-sm text-gray-500">O schronisku</p>
+                <p className="text-xl md:text-2xl lg:text-3xl font-semibold mt-2 text-gray-900">Schronisko dla Bezdomnych Zwierząt w Orzechowcach</p>
               </div>
-              <div className="h-10 min-w-[3rem] rounded-full bg-emerald-700 text-white flex items-center justify-center text-xs font-semibold uppercase tracking-wide px-3">Info</div>
+              <div className="h-8 md:h-10 min-w-[2.5rem] md:min-w-[3rem] rounded-full bg-emerald-700 text-white flex items-center justify-center text-xs font-semibold uppercase tracking-wide px-2 md:px-3">Info</div>
             </div>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-700 leading-relaxed">
               <p>Jesteśmy jednostką organizacyjną Urzędu Miasta Przemyśla. Pod opieką mamy ponad 200 zwierząt. Zapewniamy bezpieczeństwo, opiekę weterynaryjną i szukamy nowych domów dla psów i kotów.</p>
               <p>Przyjmujemy zagubione lub ranne zwierzęta przekazane przez służby miejskie i Policję. Zwierzęta po przyjęciu przechodzą kwarantannę i po 14 dniach mogą trafić do adopcji.</p>
               <p>Pomóc możesz na wiele sposobów: adopcja, wolontariat, wsparcie finansowe lub rzeczowe (karma, środki higieniczne, wyposażenie).</p>
@@ -76,26 +69,26 @@ export default function Home() {
       </section>
 
       {/* Pet strip */}
-      <section className="container mx-auto px-4 pb-14">
-        <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6">
+      <section className="container mx-auto px-4 pb-8 md:pb-14">
+        <div className="bg-white/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-4 md:p-6">
           <PetStrip />
         </div>
       </section>
 
       {/* Information Cards */}
-      <section className="container mx-auto px-4 pb-20">
-        <div className="grid md:grid-cols-3 gap-6">
+      <section className="container mx-auto px-4 pb-12 md:pb-20">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {/* 1.5% Card */}
-          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-8 flex flex-col items-center text-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-emerald-100">
+          <div className="bg-white/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center">
+            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-emerald-100">
               <img 
                 src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=400&h=400&fit=crop" 
                 alt="1.5% dla Schroniska"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-3">1,5% dla Schroniska</h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-3">1,5% dla Schroniska</h3>
+            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
               Przekaż 1,5% podatku dla Stowarzyszenia "Kudłate serce". KRS: 0000644790. Dziękujemy za każdą pomoc!
             </p>
             <Link
@@ -107,16 +100,16 @@ export default function Home() {
           </div>
 
           {/* Adoption Questionnaire Card */}
-          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-8 flex flex-col items-center text-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-emerald-100">
+          <div className="bg-white/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center">
+            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-emerald-100">
               <img 
                 src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop" 
                 alt="Adopcje zwierząt"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-3">Adopcje zwierząt</h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-3">Adopcje zwierząt</h3>
+            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
               Dowiedz się jak wygląda proces adopcji i czego się spodziewać. Ankieta adopcyjna czeka w schronisku.
             </p>
             <Link
@@ -128,16 +121,16 @@ export default function Home() {
           </div>
 
           {/* Required Reading Card */}
-          <div className="bg-white/80 backdrop-blur rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-8 flex flex-col items-center text-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-emerald-100">
+          <div className="bg-white/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center">
+            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-emerald-100">
               <img 
                 src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop" 
                 alt="Warunki adopcji"
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-3">Warunki adopcji</h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-3">Warunki adopcji</h3>
+            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
               Poznaj przepisy i regulacje dotyczące ochrony zwierząt oraz obowiązki właścicieli.
             </p>
             <Link
@@ -151,16 +144,16 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="kontakt" className="relative py-16 overflow-hidden scroll-mt-20">
+      <section id="kontakt" className="relative py-8 md:py-12 lg:py-16 overflow-hidden scroll-mt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-emerald-100/30" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">Masz pytania lub sugestie?</h2>
-              <p className="text-lg text-gray-600">Schronisko dla bezdomnych zwierząt w Orzechowcach</p>
+            <div className="text-center mb-6 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 mb-3 md:mb-4">Masz pytania lub sugestie?</h2>
+              <p className="text-base md:text-lg text-gray-600">Schronisko dla bezdomnych zwierząt w Orzechowcach</p>
             </div>
 
-            <div className="bg-white/95 backdrop-blur rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] p-8 md:p-10 space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
+            <div className="bg-white/95 backdrop-blur rounded-2xl md:rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] p-6 md:p-8 lg:p-10 space-y-6 md:space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
               {/* Address & Hours */}
               <div className="space-y-4">
                 <div>
