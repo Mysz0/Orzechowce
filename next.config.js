@@ -14,6 +14,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'i.imgur.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'external-content.duckduckgo.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
     ],
   },
 }

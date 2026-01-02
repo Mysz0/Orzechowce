@@ -120,7 +120,7 @@ export default function AdminPage() {
             <button
               type="submit"
               disabled={authLoading}
-              className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="w-full bg-emerald-700 text-white py-3 rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               {authLoading ? 'Logowanie...' : 'Zaloguj się'}
             </button>
@@ -147,7 +147,7 @@ export default function AdminPage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <PawPrint className="w-8 h-8 text-orange-600" />
+              <PawPrint className="w-8 h-8 text-emerald-700" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Panel Administracyjny</h1>
                 <p className="text-sm text-gray-600">Zarządzaj zwierzętami</p>
@@ -179,7 +179,7 @@ export default function AdminPage() {
           </h2>
           <Link
             href="/admin/add"
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg font-semibold hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="flex items-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Plus className="w-5 h-5" />
             Dodaj zwierzę

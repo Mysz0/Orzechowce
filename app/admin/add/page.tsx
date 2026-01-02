@@ -14,7 +14,6 @@ export default function AddPetPage() {
     age: '',
     sex: '' as '' | 'male' | 'female',
     description: '',
-    image_url: '',
     image_urls: '',
     status: 'available' as 'available' | 'adopted' | 'reserved',
   })
@@ -29,7 +28,6 @@ export default function AddPetPage() {
       age: formData.age ? parseInt(formData.age) : undefined,
       sex: formData.sex || undefined,
       description: formData.description || undefined,
-      image_url: formData.image_url || undefined,
       image_urls: formData.image_urls
         ? formData.image_urls
             .split(',')
@@ -87,7 +85,7 @@ export default function AddPetPage() {
                 id="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 placeholder="np. Luna, Max, Mruczek"
                 required
               />
@@ -161,38 +159,23 @@ export default function AddPetPage() {
               />
             </div>
 
-            {/* Image URL */}
-            <div>
-              <label htmlFor="image_url" className="block text-sm font-medium text-gray-700 mb-2">
-                <Upload className="w-4 h-4 inline mr-1" />
-                URL zdjęcia
-              </label>
-              <input
-                type="url"
-                id="image_url"
-                value={formData.image_url}
-                onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                placeholder="https://example.com/image.jpg"
-              />
-              <p className="mt-2 text-sm text-gray-500">
-                Wskazówka: Możesz przesłać zdjęcie do Supabase Storage lub użyć zewnętrznego URL
-              </p>
-            </div>
-
+            {/* Image URLs */}
             <div>
               <label htmlFor="image_urls" className="block text-sm font-medium text-gray-700 mb-2">
-                Dodatkowe zdjęcia (URL, po przecinku)
+                <Upload className="w-4 h-4 inline mr-1" />
+                Zdjęcia (URL, po przecinku)
               </label>
               <textarea
                 id="image_urls"
                 value={formData.image_urls}
                 onChange={(e) => setFormData({ ...formData, image_urls: e.target.value })}
-                rows={2}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                placeholder="https://example.com/a.jpg, https://example.com/b.jpg"
+                rows={3}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                placeholder="https://example.com/photo1.jpg, https://example.com/photo2.jpg"
               />
-              <p className="mt-2 text-sm text-gray-500">Opcjonalnie, podaj wiele adresów URL oddzielonych przecinkami.</p>
+              <p className="mt-2 text-sm text-gray-500">
+                Wklej adresy URL zdjęć oddzielone przecinkami. Pierwsze zdjęcie będzie głównym.
+              </p>
             </div>
 
             {/* Status */}
@@ -223,7 +206,7 @@ export default function AddPetPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg font-semibold hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>

@@ -7,7 +7,6 @@ export type Pet = {
   age?: number
   sex?: 'male' | 'female'
   description?: string
-  image_url?: string
   image_urls?: string[]
   status: 'available' | 'adopted' | 'reserved'
   created_at: string

@@ -28,7 +28,7 @@ export default function PetGrid() {
   )
 
   const gallery = selected
-    ? (selected.image_urls?.length ? selected.image_urls : selected.image_url ? [selected.image_url] : [])
+    ? (selected.image_urls || [])
     : []
 
   useEffect(() => {
@@ -48,9 +48,9 @@ export default function PetGrid() {
         </div>
         <button
           onClick={() => setFilter('all')}
-          className={`px-6 py-2 rounded-full text-sm font-semibold transition-all border ${
+          className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border hover:scale-105 active:scale-95 ${
             filter === 'all'
-              ? 'bg-emerald-700 text-white border-emerald-700'
+              ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg'
               : 'bg-white text-emerald-900 border-emerald-200 hover:border-emerald-300'
           }`}
         >
@@ -58,9 +58,9 @@ export default function PetGrid() {
         </button>
         <button
           onClick={() => setFilter('dog')}
-          className={`px-6 py-2 rounded-full text-sm font-semibold transition-all border ${
+          className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border hover:scale-105 active:scale-95 ${
             filter === 'dog'
-              ? 'bg-emerald-700 text-white border-emerald-700'
+              ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg'
               : 'bg-white text-emerald-900 border-emerald-200 hover:border-emerald-300'
           }`}
         >
@@ -68,9 +68,9 @@ export default function PetGrid() {
         </button>
         <button
           onClick={() => setFilter('cat')}
-          className={`px-6 py-2 rounded-full text-sm font-semibold transition-all border ${
+          className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 border hover:scale-105 active:scale-95 ${
             filter === 'cat'
-              ? 'bg-emerald-700 text-white border-emerald-700'
+              ? 'bg-emerald-700 text-white border-emerald-700 shadow-lg'
               : 'bg-white text-emerald-900 border-emerald-200 hover:border-emerald-300'
           }`}
         >
@@ -97,43 +97,47 @@ export default function PetGrid() {
       {/* Pet Grid */}
       {!loading && filteredPets.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredPets.map((pet) => (
-            <PetCard key={pet.id} pet={pet} onOpen={setSelected} />
+          {filteredPets.map((pet, idx) => (
+            <div key={pet.id} style={{ animation: `fadeInUp 0.5s ease-out ${idx * 50}ms both` }}>
+              <PetCard pet={pet} onOpen={setSelected} />
+            </div>
           ))}
         </div>
       )}
 
       {/* Modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4">
-          <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4 animate-in fade-in duration-200"
+             onClick={(e) => { if (e.target === e.currentTarget) setSelected(null) }}>
+          <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
             <button
               onClick={() => setSelected(null)}
-              className="absolute right-4 top-4 text-sm font-semibold text-gray-600 hover:text-gray-900"
+              className="absolute right-4 top-4 z-10 text-sm font-semibold text-gray-600 hover:text-gray-900 transition-all hover:scale-110 active:scale-95 px-3 py-2 rounded-lg hover:bg-gray-100"
             >
               Zamknij
             </button>
             <div className="grid md:grid-cols-2 min-h-[460px]">
-              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 min-h-[320px] flex flex-col">
+              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 min-h-[320px] flex flex-col animate-in fade-in slide-in-from-left-4 duration-500" style={{ animationDelay: '100ms' }}>
                 {gallery.length > 0 ? (
                   <>
-                    <div className="relative flex-1">
+                    <div className="relative flex-1 overflow-hidden">
                       <img
                         src={gallery[galleryIndex]}
                         alt={selected.name}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover transition-all duration-500 animate-in fade-in duration-300"
+                        key={galleryIndex}
                       />
                       {gallery.length > 1 && (
                         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3">
                           <button
                             onClick={() => setGalleryIndex((prev) => (prev - 1 + gallery.length) % gallery.length)}
-                            className="h-10 w-10 rounded-full bg-white/80 text-gray-800 flex items-center justify-center shadow hover:bg-white"
+                            className="h-10 w-10 rounded-full bg-white/80 text-gray-800 flex items-center justify-center shadow hover:bg-white transition-all hover:scale-110 active:scale-95"
                           >
                             ‹
                           </button>
                           <button
                             onClick={() => setGalleryIndex((prev) => (prev + 1) % gallery.length)}
-                            className="h-10 w-10 rounded-full bg-white/80 text-gray-800 flex items-center justify-center shadow hover:bg-white"
+                            className="h-10 w-10 rounded-full bg-white/80 text-gray-800 flex items-center justify-center shadow hover:bg-white transition-all hover:scale-110 active:scale-95"
                           >
                             ›
                           </button>
@@ -146,8 +150,8 @@ export default function PetGrid() {
                           <button
                             key={idx}
                             onClick={() => setGalleryIndex(idx)}
-                            className={`h-14 w-20 rounded-lg overflow-hidden border ${
-                              idx === galleryIndex ? 'border-emerald-500' : 'border-transparent'
+                            className={`h-14 w-20 rounded-lg overflow-hidden border transition-all hover:scale-105 ${
+                              idx === galleryIndex ? 'border-emerald-500 border-2 scale-105' : 'border-transparent hover:border-emerald-300'
                             }`}
                           >
                             <img src={url} alt={`${selected.name}-${idx}`} className="h-full w-full object-cover" />
@@ -162,7 +166,7 @@ export default function PetGrid() {
                   </div>
                 )}
               </div>
-              <div className="p-8 flex flex-col gap-4">
+              <div className="p-8 flex flex-col gap-4 animate-in fade-in slide-in-from-right-4 duration-500" style={{ animationDelay: '200ms' }}>
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">Zwierzę do adopcji</p>
                   <h3 className="text-3xl font-semibold text-gray-900">{selected.name}</h3>

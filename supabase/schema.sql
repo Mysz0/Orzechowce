@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS pets (
   age INTEGER,
   sex VARCHAR(10) CHECK (sex IN ('male', 'female')),
   description TEXT,
-  image_url TEXT,
+  image_urls TEXT[],
   status VARCHAR(20) DEFAULT 'available' CHECK (status IN ('available', 'adopted', 'reserved')),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()

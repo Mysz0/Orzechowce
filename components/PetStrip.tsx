@@ -124,7 +124,7 @@ export default function PetStrip() {
             }}
           >
             {[...pets, ...pets].map((pet, idx) => {
-              const primary = pet.image_urls?.[0] || pet.image_url
+              const primary = pet.image_urls?.[0]
               return (
                 <div
                   key={`${pet.id}-${idx}`}
