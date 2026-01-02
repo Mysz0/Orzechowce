@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
-import { getAllPets, updatePet, type Pet } from '@/lib/supabase'
+import { type Pet } from '@/lib/supabase'
 import { ArrowLeft, Upload, Save } from 'lucide-react'
 
 export default function EditPetPage() {
@@ -29,10 +29,11 @@ export default function EditPetPage() {
   }, [petId])
 
   async function loadPet() {
-    const pets = await getAllPets()
-    const foundPet = pets.find(p => p.id === petId)
-    
-    if (foundPet) {
+    try {
+      const res = await fetch(`/api/admin/pets/${petId}`, { cache: 'no-store' })
+      if (!res.ok) throw new Error('Failed to load pet')
+      const foundPet: Pet = await res.json()
+
       setPet(foundPet)
       setFormData({
         name: foundPet.name,
@@ -43,6 +44,9 @@ export default function EditPetPage() {
         image_url: foundPet.image_url || '',
         status: foundPet.status,
       })
+    } catch (err) {
+      console.error(err)
+      setPet(null)
     }
     setLoading(false)
   }
@@ -61,15 +65,20 @@ export default function EditPetPage() {
       status: formData.status,
     }
 
-    const result = await updatePet(petId, updates)
-    
-    if (result) {
-      alert('Zwierzę zostało zaktualizowane!')
-      router.push('/admin')
-    } else {
+    const res = await fetch(`/api/admin/pets/${petId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates),
+    })
+
+    if (!res.ok) {
       alert('Błąd podczas aktualizacji zwierzęcia')
       setSaving(false)
+      return
     }
+
+    alert('Zwierzę zostało zaktualizowane!')
+    router.push('/admin')
   }
 
   if (loading) {

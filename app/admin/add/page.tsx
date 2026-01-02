@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { addPet } from '@/lib/supabase'
 import { ArrowLeft, Upload, Save } from 'lucide-react'
 
 export default function AddPetPage() {
@@ -33,15 +32,20 @@ export default function AddPetPage() {
       status: formData.status,
     }
 
-    const result = await addPet(petData)
-    
-    if (result) {
-      alert('Zwierzę zostało dodane!')
-      router.push('/admin')
-    } else {
+    const res = await fetch('/api/admin/pets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(petData),
+    })
+
+    if (!res.ok) {
       alert('Błąd podczas dodawania zwierzęcia')
       setLoading(false)
+      return
     }
+
+    alert('Zwierzę zostało dodane!')
+    router.push('/admin')
   }
 
   return (

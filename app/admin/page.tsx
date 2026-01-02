@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { getAllPets, deletePet, type Pet } from '@/lib/supabase'
+import { type Pet } from '@/lib/supabase'
 import { PawPrint, Plus, Edit, Trash2, ArrowLeft, AlertCircle } from 'lucide-react'
 
 export default function AdminPage() {
@@ -26,8 +26,15 @@ export default function AdminPage() {
 
   async function loadPets() {
     setLoading(true)
-    const data = await getAllPets()
-    setPets(data)
+    try {
+      const res = await fetch('/api/admin/pets', { cache: 'no-store' })
+      if (!res.ok) throw new Error('Failed to load pets')
+      const data: Pet[] = await res.json()
+      setPets(data)
+    } catch (err) {
+      console.error(err)
+      alert('Nie udało się pobrać listy zwierząt')
+    }
     setLoading(false)
   }
 
@@ -45,11 +52,14 @@ export default function AdminPage() {
 
   async function handleDelete(id: string, name: string) {
     if (confirm(`Czy na pewno chcesz usunąć ${name}?`)) {
-      const success = await deletePet(id)
-      if (success) {
+      try {
+        const res = await fetch(`/api/admin/pets/${id}`, { method: 'DELETE' })
+        if (!res.ok) throw new Error('delete failed')
         alert('Zwierzę zostało usunięte')
         loadPets()
-      } else {
+      }
+      catch (err) {
+        console.error(err)
         alert('Błąd podczas usuwania')
       }
     }
