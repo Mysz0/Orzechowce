@@ -11,6 +11,7 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [password, setPassword] = useState('')
+  const [authLoading, setAuthLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
 
@@ -40,14 +41,26 @@ export default function AdminPage() {
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault()
-    // Simple authentication - in production, use proper auth
-    if (password === 'admin123' || password === process.env.ADMIN_PASSWORD) {
+    login()
+  }
+
+  async function login() {
+    setAuthLoading(true)
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      })
+      if (!res.ok) throw new Error('Unauthorized')
       sessionStorage.setItem('admin_authenticated', 'true')
       setIsAuthenticated(true)
       loadPets()
-    } else {
+    } catch (err) {
+      console.error(err)
       alert('Nieprawidłowe hasło!')
     }
+    setAuthLoading(false)
   }
 
   async function handleDelete(id: string, name: string) {
@@ -106,9 +119,10 @@ export default function AdminPage() {
 
             <button
               type="submit"
+              disabled={authLoading}
               className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              Zaloguj się
+              {authLoading ? 'Logowanie...' : 'Zaloguj się'}
             </button>
           </form>
 
