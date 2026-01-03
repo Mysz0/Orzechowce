@@ -15,8 +15,8 @@ import {
   EyeOff,
   HeartHandshake,
   Hourglass,
-  GenderFemale,
-  GenderMale,
+  User,
+  UserCircle,
   PawPrint,
   Plus,
   ShieldCheck,
@@ -39,8 +39,8 @@ export default function AdminPage() {
   }
 
   const sexLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string }> = {
-    male: { icon: GenderMale, label: 'Samiec' },
-    female: { icon: GenderFemale, label: 'Samica' },
+    male: { icon: UserCircle, label: 'Samiec' },
+    female: { icon: User, label: 'Samica' },
   }
 
   const statusLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string; tone: string }> = {
