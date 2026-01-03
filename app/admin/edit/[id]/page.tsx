@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { type Pet } from '@/lib/supabase'
-import { ArrowLeft, Upload, Save } from 'lucide-react'
+import { ArrowLeft, Upload, Save, PawPrint } from 'lucide-react'
 
 export default function EditPetPage() {
   const router = useRouter()
@@ -88,10 +88,10 @@ export default function EditPetPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-sky-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-orange-600"></div>
-          <p className="mt-4 text-gray-600">Ładowanie...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-emerald-600"></div>
+          <p className="mt-4 text-gray-700 dark:text-gray-300">Ładowanie...</p>
         </div>
       </div>
     )
@@ -99,13 +99,14 @@ export default function EditPetPage() {
 
   if (!pet) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-xl text-gray-600 mb-4">Nie znaleziono zwierzęcia</p>
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-sky-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center">
+        <div className="text-center bg-white/90 dark:bg-gray-900/80 backdrop-blur rounded-2xl shadow-xl border border-emerald-100/70 dark:border-gray-800 px-8 py-10">
+          <p className="text-xl text-gray-700 dark:text-gray-200 mb-4">Nie znaleziono zwierzęcia</p>
           <Link
             href="/admin"
-            className="text-orange-600 hover:text-orange-700"
+            className="inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200"
           >
+            <ArrowLeft className="w-4 h-4" />
             Powrót do panelu
           </Link>
         </div>
@@ -114,13 +115,13 @@ export default function EditPetPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-sky-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white/90 dark:bg-gray-900/80 backdrop-blur border-b border-emerald-100/60 dark:border-gray-800 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <Link
             href="/admin"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Powrót do panelu administracyjnego
@@ -130,14 +131,21 @@ export default function EditPetPage() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8 max-w-3xl">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Edytuj zwierzę</h1>
-          <p className="text-gray-600 mb-8">Zaktualizuj informacje o zwierzęciu</p>
+        <div className="bg-white/95 dark:bg-gray-900/80 backdrop-blur rounded-2xl shadow-xl border border-emerald-100/70 dark:border-gray-800 p-8">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 flex items-center justify-center">
+              <PawPrint className="w-6 h-6 text-emerald-700 dark:text-emerald-300" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Edytuj zwierzę</h1>
+              <p className="text-gray-600 dark:text-gray-300">Zaktualizuj informacje o zwierzęciu</p>
+            </div>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Imię <span className="text-red-500">*</span>
               </label>
               <input
@@ -145,7 +153,7 @@ export default function EditPetPage() {
                 id="name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                 placeholder="np. Luna, Max, Mruczek"
                 required
               />
@@ -153,26 +161,26 @@ export default function EditPetPage() {
 
             {/* Species */}
             <div>
-              <label htmlFor="species" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="species" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Gatunek <span className="text-red-500">*</span>
               </label>
               <select
                 id="species"
                 value={formData.species}
                 onChange={(e) => setFormData({ ...formData, species: e.target.value as any })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                 required
               >
-                <option value="dog">🐕 Pies</option>
-                <option value="cat">🐈 Kot</option>
-                <option value="other">🐾 Inne</option>
+                <option value="dog">Pies</option>
+                <option value="cat">Kot</option>
+                <option value="other">Inne</option>
               </select>
             </div>
 
             {/* Age and Sex */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="age" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                   Wiek (w latach)
                 </label>
                 <input
@@ -182,31 +190,31 @@ export default function EditPetPage() {
                   max="30"
                   value={formData.age}
                   onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                   placeholder="np. 3"
                 />
               </div>
 
               <div>
-                <label htmlFor="sex" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="sex" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                   Płeć
                 </label>
                 <select
                   id="sex"
                   value={formData.sex}
                   onChange={(e) => setFormData({ ...formData, sex: e.target.value as any })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                 >
                   <option value="">Wybierz płeć</option>
-                  <option value="male">♂️ Samiec</option>
-                  <option value="female">♀️ Samica</option>
+                  <option value="male">Samiec</option>
+                  <option value="female">Samica</option>
                 </select>
               </div>
             </div>
 
             {/* Description */}
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Opis
               </label>
               <textarea
@@ -214,14 +222,14 @@ export default function EditPetPage() {
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 rows={5}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                 placeholder="Opisz charakterystykę zwierzęcia, jego zachowanie, preferencje..."
               />
             </div>
 
             {/* Image URLs */}
             <div>
-              <label htmlFor="image_urls" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="image_urls" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 <Upload className="w-4 h-4 inline mr-1" />
                 Zdjęcia (URL, po przecinku)
               </label>
@@ -230,43 +238,43 @@ export default function EditPetPage() {
                 value={formData.image_urls}
                 onChange={(e) => setFormData({ ...formData, image_urls: e.target.value })}
                 rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                 placeholder="https://example.com/photo1.jpg, https://example.com/photo2.jpg"
               />
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 Wklej adresy URL zdjęć oddzielone przecinkami. Pierwsze zdjęcie będzie głównym.
               </p>
             </div>
 
             {/* Status */}
             <div>
-              <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="status" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Status
               </label>
               <select
                 id="status"
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
               >
-                <option value="available">✅ Dostępny do adopcji</option>
-                <option value="reserved">⏳ Zarezerwowany</option>
-                <option value="adopted">💙 Adoptowany</option>
+                <option value="available">Dostępny do adopcji</option>
+                <option value="reserved">Zarezerwowany</option>
+                <option value="adopted">Adoptowany</option>
               </select>
             </div>
 
             {/* Submit Button */}
-            <div className="flex gap-4 pt-6 border-t border-gray-200">
+            <div className="flex gap-4 pt-6 border-t border-gray-200 dark:border-gray-800">
               <Link
                 href="/admin"
-                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-center"
+                className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-center"
               >
                 Anuluj
               </Link>
               <button
                 type="submit"
                 disabled={saving}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? (
                   <>

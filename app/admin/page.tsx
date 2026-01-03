@@ -1,10 +1,27 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type ComponentType } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { type Pet } from '@/lib/supabase'
-import { PawPrint, Plus, Edit, Trash2, ArrowLeft, AlertCircle } from 'lucide-react'
+import {
+  AlertCircle,
+  ArrowLeft,
+  BadgeCheck,
+  Cat,
+  Dog,
+  Edit,
+  Eye,
+  EyeOff,
+  HeartHandshake,
+  Hourglass,
+  PawPrint,
+  Plus,
+  ShieldCheck,
+  Trash2,
+  Venus,
+  Mars,
+} from 'lucide-react'
 
 export default function AdminPage() {
   const [pets, setPets] = useState<Pet[]>([])
@@ -14,6 +31,35 @@ export default function AdminPage() {
   const [authLoading, setAuthLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
+
+  const speciesLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string }> = {
+    dog: { icon: Dog, label: 'Pies' },
+    cat: { icon: Cat, label: 'Kot' },
+    other: { icon: PawPrint, label: 'Inne' },
+  }
+
+  const sexLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string }> = {
+    male: { icon: Mars, label: 'Samiec' },
+    female: { icon: Venus, label: 'Samica' },
+  }
+
+  const statusLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string; tone: string }> = {
+    available: {
+      icon: BadgeCheck,
+      label: 'Dostępny',
+      tone: 'bg-emerald-100 text-emerald-800',
+    },
+    reserved: {
+      icon: Hourglass,
+      label: 'Zarezerwowany',
+      tone: 'bg-amber-100 text-amber-800',
+    },
+    adopted: {
+      icon: HeartHandshake,
+      label: 'Adoptowany',
+      tone: 'bg-blue-100 text-blue-800',
+    },
+  }
 
   useEffect(() => {
     const auth = sessionStorage.getItem('admin_authenticated')
@@ -86,17 +132,19 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-sky-50 flex items-center justify-center p-6 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+        <div className="bg-white/90 dark:bg-gray-900/80 backdrop-blur rounded-2xl shadow-2xl border border-emerald-100/60 dark:border-gray-800 p-8 w-full max-w-md">
           <div className="text-center mb-8">
-            <PawPrint className="w-16 h-16 text-orange-600 mx-auto mb-4" />
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Panel Administracyjny</h1>
-            <p className="text-gray-600">Schronisko Orzechowce</p>
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <PawPrint className="w-9 h-9 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Panel Administracyjny</h1>
+            <p className="text-gray-600 dark:text-gray-300">Schronisko Orzechowce</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                 Hasło administratora
               </label>
               <input
@@ -104,32 +152,33 @@ export default function AdminPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-900 dark:text-white"
                 placeholder="Wprowadź hasło"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="mt-2 text-sm text-orange-600 hover:text-orange-700"
+                className="mt-2 inline-flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200"
               >
-                {showPassword ? 'Ukryj' : 'Pokaż'} hasło
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                <span>{showPassword ? 'Ukryj' : 'Pokaż'} hasło</span>
               </button>
             </div>
 
             <button
               type="submit"
               disabled={authLoading}
-              className="w-full bg-emerald-700 text-white py-3 rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="w-full bg-emerald-700 text-white py-3 rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-70"
             >
               {authLoading ? 'Logowanie...' : 'Zaloguj się'}
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
             <Link
               href="/"
-              className="flex items-center justify-center gap-2 text-gray-600 hover:text-gray-900"
+              className="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >
               <ArrowLeft className="w-4 h-4" />
               Powrót do strony głównej
@@ -141,28 +190,30 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-sky-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white/90 dark:bg-gray-900/80 backdrop-blur border-b border-emerald-100/60 dark:border-gray-800 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <PawPrint className="w-8 h-8 text-emerald-700" />
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/60 flex items-center justify-center">
+                <PawPrint className="w-6 h-6 text-emerald-700 dark:text-emerald-300" />
+              </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Panel Administracyjny</h1>
-                <p className="text-sm text-gray-600">Zarządzaj zwierzętami</p>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Panel Administracyjny</h1>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Zarządzaj zwierzętami</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <Link
                 href="/"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Strona główna
               </Link>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                className="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition-colors shadow-sm"
               >
                 Wyloguj
               </button>
@@ -173,13 +224,13 @@ export default function AdminPage() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-8 flex items-center justify-between">
-          <h2 className="text-3xl font-bold text-gray-900">
+        <div className="mb-8 flex items-center justify-between gap-3">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Wszystkie zwierzęta ({pets.length})
           </h2>
           <Link
             href="/admin/add"
-            className="flex items-center gap-2 px-6 py-3 bg-emerald-700 text-white rounded-lg font-semibold hover:bg-emerald-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Plus className="w-5 h-5" />
             Dodaj zwierzę
@@ -188,70 +239,94 @@ export default function AdminPage() {
 
         {loading && (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-orange-600"></div>
-            <p className="mt-4 text-gray-600">Ładowanie...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-emerald-600"></div>
+            <p className="mt-4 text-gray-600 dark:text-gray-300">Ładowanie...</p>
           </div>
         )}
 
         {!loading && pets.length === 0 && (
-          <div className="text-center py-12 bg-white rounded-2xl shadow-sm">
-            <AlertCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-xl text-gray-600 mb-2">Brak zwierząt w bazie danych</p>
-            <p className="text-gray-500 mb-6">Dodaj pierwsze zwierzę klikając przycisk powyżej</p>
+          <div className="text-center py-12 bg-white/90 dark:bg-gray-900/80 backdrop-blur rounded-2xl shadow-lg border border-emerald-100/70 dark:border-gray-800">
+            <AlertCircle className="w-16 h-16 text-emerald-600 dark:text-emerald-300 mx-auto mb-4" />
+            <p className="text-xl text-gray-700 dark:text-gray-200 mb-2">Brak zwierząt w bazie danych</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Dodaj pierwsze zwierzę klikając przycisk powyżej</p>
           </div>
         )}
 
         {!loading && pets.length > 0 && (
-          <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white/95 dark:bg-gray-900/80 backdrop-blur rounded-2xl shadow-lg border border-emerald-100/70 dark:border-gray-800 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-emerald-50/80 dark:bg-gray-800 border-b border-emerald-100/60 dark:border-gray-700">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Nazwa</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Gatunek</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Wiek</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Płeć</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Status</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Data dodania</th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900">Akcje</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Nazwa</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Gatunek</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Wiek</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Płeć</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Status</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-100">Data dodania</th>
+                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 dark:text-gray-100">Akcje</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
                   {pets.map((pet) => (
-                    <tr key={pet.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{pet.name}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
-                        {pet.species === 'dog' ? '🐕 Pies' : pet.species === 'cat' ? '🐈 Kot' : '🐾 Inne'}
+                    <tr key={pet.id} className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">{pet.name}</td>
+                      <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-200">
+                        {(() => {
+                          const entry = speciesLabel[pet.species]
+                          const Icon = entry?.icon || PawPrint
+                          return (
+                            <span className="inline-flex items-center gap-2">
+                              <Icon className="w-4 h-4" />
+                              <span>{entry?.label || 'Inne'}</span>
+                            </span>
+                          )
+                        })()}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{pet.age || '-'}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
-                        {pet.sex === 'male' ? '♂️ Samiec' : pet.sex === 'female' ? '♀️ Samica' : '-'}
+                      <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-200">{pet.age || '-'}</td>
+                      <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-200">
+                        {pet.sex ? (
+                          (() => {
+                            const entry = sexLabel[pet.sex]
+                            const Icon = entry?.icon || PawPrint
+                            return (
+                              <span className="inline-flex items-center gap-2">
+                                <Icon className="w-4 h-4" />
+                                <span>{entry?.label || 'Nieznana'}</span>
+                              </span>
+                            )
+                          })()
+                        ) : (
+                          '-'
+                        )}
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
-                          pet.status === 'available' ? 'bg-green-100 text-green-800' :
-                          pet.status === 'adopted' ? 'bg-blue-100 text-blue-800' :
-                          'bg-yellow-100 text-yellow-800'
-                        }`}>
-                          {pet.status === 'available' ? 'Dostępny' :
-                           pet.status === 'adopted' ? 'Adoptowany' : 'Zarezerwowany'}
-                        </span>
+                        {(() => {
+                          const entry = statusLabel[pet.status]
+                          const Icon = entry?.icon || ShieldCheck
+                          return (
+                            <span className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full ${entry?.tone || 'bg-gray-100 text-gray-800'}`}>
+                              <Icon className="w-4 h-4" />
+                              <span>{entry?.label || 'Status'}</span>
+                            </span>
+                          )
+                        })()}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-200">
                         {new Date(pet.created_at).toLocaleDateString('pl-PL')}
                       </td>
                       <td className="px-6 py-4 text-right">
                         <div className="flex items-center justify-end gap-2">
                           <Link
                             href={`/admin/edit/${pet.id}`}
-                            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                            className="p-2 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
                             title="Edytuj"
                           >
                             <Edit className="w-5 h-5" />
                           </Link>
                           <button
                             onClick={() => handleDelete(pet.id, pet.name)}
-                            className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
                             title="Usuń"
                           >
                             <Trash2 className="w-5 h-5" />

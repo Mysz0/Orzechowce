@@ -1,5 +1,20 @@
 import Link from 'next/link'
-import { ArrowLeft, BookOpen, Scale, FileText, Shield, Heart } from 'lucide-react'
+import {
+  AlertTriangle,
+  ArrowLeft,
+  BookMarked,
+  BookOpen,
+  ClipboardCheck,
+  FileText,
+  Heart,
+  Home,
+  Info,
+  PhoneCall,
+  Scale,
+  Shield,
+  ShieldCheck,
+  Siren,
+} from 'lucide-react'
 import ContactButton from '@/components/ContactButton'
 import Header from '@/components/Header'
 
@@ -165,7 +180,10 @@ export default function LekturaPage() {
             
             <div className="space-y-4">
               <div className="panel-emerald rounded-xl">
-                <h3 className="font-semibold heading-strong mb-3">📋 Wymagane przy adopcji:</h3>
+                <h3 className="font-semibold heading-strong mb-3 flex items-center gap-2">
+                  <ClipboardCheck className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
+                  <span>Wymagane przy adopcji:</span>
+                </h3>
                 <ul className="space-y-2 ml-4 text-soft">
                   <li className="flex items-start gap-2">
                     <span className="bullet-emerald">•</span>
@@ -191,7 +209,10 @@ export default function LekturaPage() {
               </div>
 
               <div className="panel-blue rounded-xl">
-                <h3 className="font-semibold heading-strong mb-3">🏠 Twoje obowiązki jako opiekuna:</h3>
+                <h3 className="font-semibold heading-strong mb-3 flex items-center gap-2">
+                  <Home className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                  <span>Twoje obowiązki jako opiekuna:</span>
+                </h3>
                 <ul className="space-y-2 ml-4 text-soft">
                   <li className="flex items-start gap-2">
                     <span className="bullet-blue">•</span>
@@ -225,10 +246,13 @@ export default function LekturaPage() {
               </div>
 
               <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl border-l-4 border-purple-500 dark:border-purple-600">
-                <p className="text-purple-900 dark:text-purple-200 font-medium">
-                  ⚠️ Schronisko zastrzega sobie prawo do wizyty poadopcyjnej oraz odebrania zwierzęcia 
-                  w razie stwierdzenia nieodpowiednich warunków lub nieprawdziwych danych.
-                </p>
+                <div className="flex items-start gap-3 text-purple-900 dark:text-purple-200 font-medium">
+                  <AlertTriangle className="w-5 h-5 mt-0.5 text-purple-700 dark:text-purple-200" />
+                  <p>
+                    Schronisko zastrzega sobie prawo do wizyty poadopcyjnej oraz odebrania zwierzęcia 
+                    w razie stwierdzenia nieodpowiednich warunków lub nieprawdziwych danych.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -244,17 +268,20 @@ export default function LekturaPage() {
               </p>
 
               <div className="panel-emerald rounded-xl">
-                <h3 className="font-semibold heading-strong mb-4">📞 Ważne numery telefonu:</h3>
+                <h3 className="font-semibold heading-strong mb-4 flex items-center gap-2">
+                  <PhoneCall className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
+                  <span>Ważne numery telefonu:</span>
+                </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
-                    <span className="text-2xl">🚨</span>
+                    <Siren className="w-5 h-5 mt-1 text-emerald-700 dark:text-emerald-400" />
                     <div>
                       <p className="font-semibold heading-strong">Straż Miejska (bezdomne zwierzęta)</p>
                       <p className="text-emerald-700 dark:text-emerald-400 text-xl font-bold">986</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-2xl">👮</span>
+                    <ShieldCheck className="w-5 h-5 mt-1 text-emerald-700 dark:text-emerald-400" />
                     <div>
                       <p className="font-semibold heading-strong">Policja (znęcanie się nad zwierzętami)</p>
                       <p className="text-emerald-700 dark:text-emerald-400 text-xl font-bold">997</p>
@@ -290,7 +317,10 @@ export default function LekturaPage() {
               </div>
 
               <div className="panel-red rounded-xl border-l-4 border-red-500 dark:border-red-600">
-                <h3 className="font-semibold heading-strong mb-3">⚠️ Kary za znęcanie się nad zwierzętami:</h3>
+                <h3 className="font-semibold heading-strong mb-3 flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                  <span>Kary za znęcanie się nad zwierzętami:</span>
+                </h3>
                 <ul className="space-y-2 ml-4 text-soft">
                   <li className="flex items-start gap-2">
                     <span className="bullet-red">•</span>
@@ -312,7 +342,10 @@ export default function LekturaPage() {
               </div>
 
               <div className="panel-blue rounded-xl">
-                <h3 className="font-semibold heading-strong mb-3">ℹ️ Ważne informacje:</h3>
+                <h3 className="font-semibold heading-strong mb-3 flex items-center gap-2">
+                  <Info className="w-5 h-5 text-blue-700 dark:text-blue-400" />
+                  <span>Ważne informacje:</span>
+                </h3>
                 <ul className="space-y-2 ml-4 text-soft">
                   <li className="flex items-start gap-2">
                     <span className="bullet-blue">•</span>
@@ -646,7 +679,10 @@ export default function LekturaPage() {
 
           {/* Important note */}
           <div className="surface-section p-8">
-            <h3 className="font-semibold heading-strong mb-3">📚 Dlaczego warto znać przepisy?</h3>
+            <h3 className="font-semibold heading-strong mb-3 flex items-center gap-2">
+              <BookMarked className="w-5 h-5 text-indigo-700 dark:text-indigo-400" />
+              <span>Dlaczego warto znać przepisy?</span>
+            </h3>
             <p className="text-soft leading-relaxed">
               Znajomość przepisów prawnych dotyczących ochrony zwierząt to nie tylko obowiązek każdego 
               właściciela, ale także wyraz odpowiedzialności i troski o dobrostan zwierzęcia. 
