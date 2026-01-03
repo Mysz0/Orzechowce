@@ -15,12 +15,12 @@ import {
   EyeOff,
   HeartHandshake,
   Hourglass,
+  GenderFemale,
+  GenderMale,
   PawPrint,
   Plus,
   ShieldCheck,
   Trash2,
-  Venus,
-  Mars,
 } from 'lucide-react'
 
 export default function AdminPage() {
@@ -39,8 +39,8 @@ export default function AdminPage() {
   }
 
   const sexLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string }> = {
-    male: { icon: Mars, label: 'Samiec' },
-    female: { icon: Venus, label: 'Samica' },
+    male: { icon: GenderMale, label: 'Samiec' },
+    female: { icon: GenderFemale, label: 'Samica' },
   }
 
   const statusLabel: Record<string, { icon: ComponentType<{ className?: string }>; label: string; tone: string }> = {
