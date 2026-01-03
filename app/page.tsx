@@ -79,7 +79,7 @@ export default function Home() {
             </p>
             <Link
               href="/1-5-procent"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
             >
               Czytaj więcej
             </Link>
@@ -100,7 +100,7 @@ export default function Home() {
             </p>
             <Link
               href="/ankieta"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
             >
               Czytaj więcej
             </Link>
@@ -121,7 +121,7 @@ export default function Home() {
             </p>
             <Link
               href="/lektura"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
             >
               Czytaj więcej
             </Link>
