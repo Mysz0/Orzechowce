@@ -24,6 +24,7 @@ export default function Header({ currentPage = 'home' }: HeaderProps) {
         <nav className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-medium text-gray-800 dark:text-gray-200">
           <a 
             href="/"
+            style={{ WebkitTapHighlightColor: 'transparent', WebkitUserSelect: 'none' }}
             className={`px-2 md:px-3 py-2 rounded-full ${
               currentPage === 'home' 
                 ? 'bg-emerald-50 dark:bg-gray-800 text-emerald-900 dark:text-emerald-400' 
@@ -34,6 +35,7 @@ export default function Header({ currentPage = 'home' }: HeaderProps) {
           </a>
           <a 
             href="/adopt"
+            style={{ WebkitTapHighlightColor: 'transparent', WebkitUserSelect: 'none' }}
             className={`px-2 md:px-3 py-2 rounded-full ${
               currentPage === 'adopt' 
                 ? 'bg-emerald-50 dark:bg-gray-800 text-emerald-900 dark:text-emerald-400' 
