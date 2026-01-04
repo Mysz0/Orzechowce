@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/app/ThemeContext'
+import IOSFix from '@/components/IOSFix'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin', 'latin-ext'] })
 
@@ -18,11 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className={spaceGrotesk.className} onClick={() => {}}>
+      <body className={spaceGrotesk.className}>
+        <IOSFix />
         <ThemeProvider>
           {children}
         </ThemeProvider>
-        <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('touchstart', function() {}, {passive: true});` }} />
       </body>
     </html>
   )
