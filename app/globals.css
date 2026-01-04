@@ -35,6 +35,12 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* iOS Safari touch fixes */
+a, button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 html.dark body {
   background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
 }

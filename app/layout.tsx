@@ -18,10 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className={spaceGrotesk.className}>
+      <body className={spaceGrotesk.className} onClick={() => {}}>
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('touchstart', function() {}, {passive: true});` }} />
       </body>
     </html>
   )
