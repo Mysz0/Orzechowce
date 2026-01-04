@@ -134,12 +134,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-emerald-100/30 dark:from-gray-900 dark:to-gray-800/30" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-6 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-none">
+            <div className="text-center mb-6 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white mb-3 md:mb-4">Masz pytania lub sugestie?</h2>
               <p className="text-base md:text-lg text-gray-600 dark:text-gray-400">Schronisko dla bezdomnych zwierząt w Orzechowcach</p>
             </div>
 
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur rounded-2xl md:rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)] p-6 md:p-8 lg:p-10 space-y-6 md:space-y-8 animate-in zoom-in-95 duration-500 pointer-events-auto" style={{ animationDelay: '100ms' }}>
+            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur rounded-2xl md:rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)] p-6 md:p-8 lg:p-10 space-y-6 md:space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
               {/* Address & Hours */}
               <div className="space-y-4">
                 <div>

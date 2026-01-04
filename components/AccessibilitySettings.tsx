@@ -9,25 +9,19 @@ function AccessibilitySettingsContent() {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside - use click event only, not touch
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent | TouchEvent) {
-      const target = event.target as Node
-      // Don't close if clicking on navigation links
-      if (target instanceof Element && target.closest('nav a')) {
-        return
-      }
-      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false)
       }
     }
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-      document.addEventListener('touchstart', handleClickOutside, false)
+      // Use click instead of mousedown/touchstart to avoid intercepting navigation
+      document.addEventListener('click', handleClickOutside)
       return () => {
-        document.removeEventListener('mousedown', handleClickOutside)
-        document.removeEventListener('touchstart', handleClickOutside, false)
+        document.removeEventListener('click', handleClickOutside)
       }
     }
   }, [isOpen])

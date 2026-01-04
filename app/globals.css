@@ -93,6 +93,15 @@ html.dark.high-contrast a {
 a {
   color: inherit;
   text-decoration: none;
+  /* Fix iOS Safari double-tap issue */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure buttons also work on first tap on iOS */
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom Animations */
