@@ -3,11 +3,12 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
+export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const { data, error } = await supabaseAdmin
     .from('pets')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single()
 
   if (error) {
@@ -18,13 +19,14 @@ export async function GET(_: Request, { params }: { params: { id: string } }) {
   return NextResponse.json(data)
 }
 
-export async function PATCH(request: Request, { params }: { params: { id: string } }) {
+export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const body = await request.json()
 
   const { data, error } = await supabaseAdmin
     .from('pets')
     .update(body)
-    .eq('id', params.id)
+    .eq('id', id)
     .select()
     .single()
 
@@ -36,11 +38,12 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   return NextResponse.json(data)
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const { error } = await supabaseAdmin
     .from('pets')
     .delete()
-    .eq('id', params.id)
+    .eq('id', id)
 
   if (error) {
     console.error('Error deleting pet (admin):', error)
