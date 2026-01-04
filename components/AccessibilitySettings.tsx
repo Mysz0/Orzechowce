@@ -2,14 +2,33 @@
 
 import { useTheme } from '@/app/ThemeContext'
 import { Moon, Sun, Contrast } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 function AccessibilitySettingsContent() {
   const { theme, contrast, toggleTheme, setContrast } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside)
+        document.removeEventListener('touchstart', handleClickOutside)
+      }
+    }
+  }, [isOpen])
 
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       {/* Accessibility Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

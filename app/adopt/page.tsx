@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowRight, PawPrint } from 'lucide-react'
 import PetGrid from '@/components/PetGrid'
