@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PawPrint, ArrowRight } from 'lucide-react'
 import PetStrip from '@/components/PetStrip'
@@ -10,14 +11,16 @@ import Header from '@/components/Header'
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
       <Header currentPage="home" />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-8 md:py-12 lg:py-16 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center">
-          <div>
+      <section className="relative overflow-hidden py-8 md:py-12 lg:py-16 bg-white dark:bg-gray-950" style={{ pointerEvents: 'auto' }}>
+        <div className="container mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-6 md:gap-10 items-center" style={{ pointerEvents: 'auto' }}>
+          <div style={{ pointerEvents: 'auto' }}>
             <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-emerald-700/80 dark:text-emerald-400/80 mb-3 md:mb-4">Adoptuj odpowiedzialnie</p>
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white leading-tight mb-4 md:mb-6">
                 Zobacz psy i koty gotowe do adopcji.
@@ -25,19 +28,21 @@ export default function Home() {
               <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mb-6 md:mb-8">
               One potrzebują Twojej miłości i wsparcia. Przeglądaj listę naszych podopiecznych, poznaj ich wiek, charakter i potrzeby. Kliknij kartę, aby otworzyć pełny opis zwierzęcia.
               </p>
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              <Link
-                href="/adopt"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors shadow-sm"
+            <div className="flex flex-wrap gap-2 md:gap-3" style={{ pointerEvents: 'auto' }}>
+              <button
+                onClick={() => router.push('/adopt')}
+                type="button"
+                className="inline-flex items-center gap-2 px-6 py-4 min-h-[56px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 active:bg-emerald-900 transition-colors shadow-sm"
+                style={{ cursor: 'pointer', WebkitTapHighlightColor: 'rgba(45, 122, 88, 0.3)' }}
               >
                 Przeglądaj zwierzęta
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
               <ScrollToContactButton />
             </div>
           </div>
 
-          <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_25px_80px_rgba(45,122,88,0.12)] p-6 md:p-8">
+          <div className="relative bg-white/80 dark:bg-gray-900/80 rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_25px_80px_rgba(45,122,88,0.12)] p-6 md:p-8" style={{ pointerEvents: 'none' }}>
             <div className="flex items-start justify-between gap-3 md:gap-4 mb-4 md:mb-6">
               <div>
                 <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">O schronisku</p>
@@ -56,7 +61,7 @@ export default function Home() {
 
       {/* Pet strip */}
       <section className="container mx-auto px-4 pb-8 md:pb-14">
-        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-4 md:p-6">
+        <div className="bg-white/80 dark:bg-gray-900/80 rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-4 md:p-6">
           <PetStrip />
         </div>
       </section>
@@ -65,7 +70,7 @@ export default function Home() {
       <section className="container mx-auto px-4 pb-12 md:pb-20">
         <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {/* 1.5% Card */}
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center">
+          <div className="bg-white/80 dark:bg-gray-900/80 rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center" style={{ pointerEvents: 'auto' }}>
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-emerald-100 dark:border-gray-700">
               <img 
                 src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=400&h=400&fit=crop" 
@@ -77,16 +82,18 @@ export default function Home() {
             <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 md:mb-6 leading-relaxed">
               Przekaż 1,5% podatku dla Stowarzyszenia "Kudłate serce". KRS: 0000644790. Dziękujemy za każdą pomoc!
             </p>
-            <Link
-              href="/1-5-procent"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+            <button
+              onClick={() => router.push('/1-5-procent')}
+              type="button"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 min-h-[56px] w-full rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 active:bg-emerald-900 transition-colors"
+              style={{ cursor: 'pointer', WebkitTapHighlightColor: 'rgba(45, 122, 88, 0.3)' }}
             >
               Czytaj więcej
-            </Link>
+            </button>
           </div>
 
           {/* Adoption Questionnaire Card */}
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center">
+          <div className="bg-white/80 dark:bg-gray-900/80 rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center" style={{ pointerEvents: 'auto' }}>
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-emerald-100 dark:border-gray-700">
               <img 
                 src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=400&fit=crop" 
@@ -98,16 +105,18 @@ export default function Home() {
             <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 md:mb-6 leading-relaxed">
               Dowiedz się jak wygląda proces adopcji i czego się spodziewać. Ankieta adopcyjna czeka w schronisku.
             </p>
-            <Link
-              href="/ankieta"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+            <button
+              onClick={() => router.push('/ankieta')}
+              type="button"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 min-h-[56px] w-full rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 active:bg-emerald-900 transition-colors"
+              style={{ cursor: 'pointer', WebkitTapHighlightColor: 'rgba(45, 122, 88, 0.3)' }}
             >
               Czytaj więcej
-            </Link>
+            </button>
           </div>
 
           {/* Required Reading Card */}
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center">
+          <div className="bg-white/80 dark:bg-gray-900/80 rounded-2xl md:rounded-3xl border border-emerald-100 dark:border-gray-700 shadow-[0_18px_40px_rgba(45,122,88,0.08)] p-6 md:p-8 flex flex-col items-center text-center" style={{ pointerEvents: 'auto' }}>
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-emerald-100 dark:border-gray-700">
               <img 
                 src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=400&fit=crop" 
@@ -119,12 +128,14 @@ export default function Home() {
             <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 md:mb-6 leading-relaxed">
               Poznaj przepisy i regulacje dotyczące ochrony zwierząt oraz obowiązki właścicieli.
             </p>
-            <Link
-              href="/lektura"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors"
+            <button
+              onClick={() => router.push('/lektura')}
+              type="button"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 min-h-[56px] w-full rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800 active:bg-emerald-900 transition-colors"
+              style={{ cursor: 'pointer', WebkitTapHighlightColor: 'rgba(45, 122, 88, 0.3)' }}
             >
               Czytaj więcej
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -139,7 +150,7 @@ export default function Home() {
               <p className="text-base md:text-lg text-gray-600 dark:text-gray-400">Schronisko dla bezdomnych zwierząt w Orzechowcach</p>
             </div>
 
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur rounded-2xl md:rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)] p-6 md:p-8 lg:p-10 space-y-6 md:space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
+            <div className="bg-white/95 dark:bg-gray-800/95 rounded-2xl md:rounded-3xl shadow-[0_25px_80px_rgba(45,122,88,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)] p-6 md:p-8 lg:p-10 space-y-6 md:space-y-8 animate-in zoom-in-95 duration-500" style={{ animationDelay: '100ms' }}>
               {/* Address & Hours */}
               <div className="space-y-4">
                 <div>

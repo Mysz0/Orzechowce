@@ -35,10 +35,26 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* iOS Safari touch fixes */
-a, button {
-  touch-action: manipulation;
+/* iOS Safari touch fixes - comprehensive */
+* {
   -webkit-tap-highlight-color: transparent;
+}
+
+a, button, [role="button"], [role="link"] {
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+/* Prevent iOS double-tap zoom on interactive elements */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Fix iOS hover states causing double-tap issues */
+@media (hover: none) {
+  a:hover, button:hover {
+    /* Disable hover effects on touch devices to prevent first-tap-hover, second-tap-click */
+  }
 }
 
 html.dark body {

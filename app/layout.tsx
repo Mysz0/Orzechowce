@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/app/ThemeContext'
@@ -12,14 +12,21 @@ export const metadata: Metadata = {
   keywords: 'schronisko, adopcja, psy, koty, zwierzęta, Orzechowce',
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="pl">
-      <body className={spaceGrotesk.className}>
+    <html lang="pl" suppressHydrationWarning>
+      <body className={spaceGrotesk.className} suppressHydrationWarning>
         <IOSFix />
         <ThemeProvider>
           {children}
