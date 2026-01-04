@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { PawPrint } from 'lucide-react'
 import AccessibilitySettings from './AccessibilitySettings'
 
@@ -10,7 +9,6 @@ interface HeaderProps {
 }
 
 export default function Header({ currentPage = 'home' }: HeaderProps) {
-  const router = useRouter()
   return (
     <header className="sticky top-0 z-50 bg-white/85 dark:bg-gray-900/85 backdrop-blur border-b border-emerald-50/60 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between gap-3">
@@ -24,26 +22,26 @@ export default function Header({ currentPage = 'home' }: HeaderProps) {
           </div>
         </Link>
         <nav className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-medium text-gray-800 dark:text-gray-200">
-          <button 
-            onClick={() => router.push('/')}
+          <a 
+            href="/"
             className={`px-2 md:px-3 py-2 rounded-full ${
               currentPage === 'home' 
                 ? 'bg-emerald-50 dark:bg-gray-800 text-emerald-900 dark:text-emerald-400' 
-                : 'md:hover:bg-emerald-50 md:dark:hover:bg-gray-800'
+                : ''
             }`}
           >
             Strona główna
-          </button>
-          <button 
-            onClick={() => router.push('/adopt')}
+          </a>
+          <a 
+            href="/adopt"
             className={`px-2 md:px-3 py-2 rounded-full ${
               currentPage === 'adopt' 
                 ? 'bg-emerald-50 dark:bg-gray-800 text-emerald-900 dark:text-emerald-400' 
-                : 'md:hover:bg-emerald-50 md:dark:hover:bg-gray-800'
+                : ''
             }`}
           >
             Adopcje
-          </button>
+          </a>
           <AccessibilitySettings />
         </nav>
       </div>
