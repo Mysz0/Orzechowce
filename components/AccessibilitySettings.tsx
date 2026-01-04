@@ -12,17 +12,22 @@ function AccessibilitySettingsContent() {
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | TouchEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node
+      // Don't close if clicking on navigation links
+      if (target instanceof Element && target.closest('nav a')) {
+        return
+      }
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setIsOpen(false)
       }
     }
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside)
-      document.addEventListener('touchstart', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside, false)
       return () => {
         document.removeEventListener('mousedown', handleClickOutside)
-        document.removeEventListener('touchstart', handleClickOutside)
+        document.removeEventListener('touchstart', handleClickOutside, false)
       }
     }
   }, [isOpen])
